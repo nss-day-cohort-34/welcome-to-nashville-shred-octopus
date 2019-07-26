@@ -54,7 +54,21 @@ concertResultsContainer = document.querySelector('.concert__results');
 concertResultsContainer.addEventListener('click', (event) => {
     // Get a reference to the save button that was clicked
     const saveButton = document.querySelector(`.${event.target.classList[1]}`);
-    console.log(saveButton.parentElement.childNodes);
+    // Get a reference to the save button's parent container
+    const concertContainer = saveButton.parentElement;
+    // Get a reference to the concert title and location
+    const concertTitle = concertContainer.childNodes[1];
+    const concertLocation = concertContainer.childNodes[3];
+
+    const newItinerary = `<h2>${concertTitle.innerHTML}</h2>
+                        <p>${concertLocation.innerHTML}</p>`;
+
+    // Get a reference container to concert itinerary
+    const concertItinerary = document.querySelector('.itinerary__concert');
+
+    // Add concert title and location to the itinerary
+    concertItinerary.innerHTML = newItinerary;
+
 });
 
 
