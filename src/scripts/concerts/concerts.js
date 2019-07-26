@@ -1,10 +1,13 @@
+
+// --------------- Data Functionality for Concerts ---------------
 // Get data for concerts in Nashville
 
-const getConcertData = () => {
-    return fetch('https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&dmaId=343&apikey=r4LapB95qG4riVlovapgNoC7OX029GrF')
+const getConcertData = (keyword) => {
+    return fetch(`https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&dmaId=343&keyword=${keyword}&size=50&apikey=r4LapB95qG4riVlovapgNoC7OX029GrF`)
     .then(response => response.json());
 };
 
+// --------------- Helper functions for Concerts ---------------
 
 // Write a function that takes in a concert object and generates an html representation of that object
 
@@ -27,16 +30,20 @@ const addConcertHTML = (HTMLString, container) => {
     container.innerHTML += HTMLString;
 };
 
-// -------------- Main Application Functionality ---------------
+// -------------- Main Application Functionality for Concerts ---------------
 
 // Add event listener for concert search button
 const searchConcertsButton = document.querySelector('.search__concerts');
 
 searchConcertsButton.addEventListener('click', (event) => {
+    // Get reference to value of concert search text input
+    const concertSearch = document.querySelector('.search__concerts__keyword').value;
 
-    getConcertData().then(parsedConcerts => {
+    // Call fetch function to get data, passing in the user-provided keyword;
+    getConcertData(concertSearch).then(parsedConcerts => {
         const concerts = parsedConcerts._embedded.events;
         const concertResultsContainer = document.querySelector('.concert__results');
+        concertResultsContainer.innerHTML = '';
 
         // Loops through the array of concerts and creates an HTML representation of the concert with its name and location, and adds the representation to the concertResultsContainer on the DOM. Limits results to 4.
         concerts.forEach(concert => {
@@ -46,20 +53,27 @@ searchConcertsButton.addEventListener('click', (event) => {
             }
         });
     });
+
+    
 });
 
 // Add an event listener to the concert results container that updates the itinerary with the corresponding concer when the user clicks 'save' for a particular concert.
 
 concertResultsContainer = document.querySelector('.concert__results');
+
 concertResultsContainer.addEventListener('click', (event) => {
+
     // Get a reference to the save button that was clicked
     const saveButton = document.querySelector(`.${event.target.classList[1]}`);
+
     // Get a reference to the save button's parent container
     const concertContainer = saveButton.parentElement;
+
     // Get a reference to the concert title and location
     const concertTitle = concertContainer.childNodes[1];
     const concertLocation = concertContainer.childNodes[3];
 
+    // Create HTML representation with with title and location
     const newItinerary = `<h2>${concertTitle.innerHTML}</h2>
                         <p>${concertLocation.innerHTML}</p>`;
 
@@ -68,7 +82,6 @@ concertResultsContainer.addEventListener('click', (event) => {
 
     // Add concert title and location to the itinerary
     concertItinerary.innerHTML = newItinerary;
-
 });
 
 
