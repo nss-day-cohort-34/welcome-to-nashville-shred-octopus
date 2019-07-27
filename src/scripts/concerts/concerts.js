@@ -38,6 +38,7 @@ const searchConcertsButton = document.querySelector('.search__concerts');
 searchConcertsButton.addEventListener('click', (event) => {
     // Get reference to value of concert search text input
     const concertSearch = document.querySelector('.search__concerts__keyword').value;
+    concertSearch
 
     // Call fetch function to get data, passing in the user-provided keyword;
     getConcertData(concertSearch).then(parsedConcerts => {
@@ -54,7 +55,7 @@ searchConcertsButton.addEventListener('click', (event) => {
         });
     });
 
-    
+    console.log(concertSearch.value);
 });
 
 // Add an event listener to the concert results container that updates the itinerary with the corresponding concer when the user clicks 'save' for a particular concert.
@@ -63,25 +64,35 @@ concertResultsContainer = document.querySelector('.concert__results');
 
 concertResultsContainer.addEventListener('click', (event) => {
 
-    // Get a reference to the save button that was clicked
-    const saveButton = document.querySelector(`.${event.target.classList[1]}`);
+    // Get a reference to the classList of the item that was clicked
+    const classArray = event.target.classList;
+    console.log(classArray);
 
-    // Get a reference to the save button's parent container
-    const concertContainer = saveButton.parentElement;
+    // Get a reference to the unique class for the item that was clicked
+    const uniqueClass = classArray[1];
 
-    // Get a reference to the concert title and location
-    const concertTitle = concertContainer.childNodes[1];
-    const concertLocation = concertContainer.childNodes[3];
+    // Get a reference to the button that was clicked
+    const saveButton = document.querySelector(`.${uniqueClass}`);
 
-    // Create HTML representation with with title and location
-    const newItinerary = `<h2>${concertTitle.innerHTML}</h2>
-                        <p>${concertLocation.innerHTML}</p>`;
+    // Check to ensure a save button was clicked and not some random area of the container
+    if (uniqueClass.includes('concert__save')) {
+        // Get a reference to the save button's parent container
+        const concertContainer = saveButton.parentElement;
 
-    // Get a reference container to concert itinerary
-    const concertItinerary = document.querySelector('.itinerary__concert');
+        // Get a reference to the concert title and location
+        const concertTitle = concertContainer.childNodes[1];
+        const concertLocation = concertContainer.childNodes[3];
 
-    // Add concert title and location to the itinerary
-    concertItinerary.innerHTML = newItinerary;
+        // Create HTML representation with with title and location
+        const newItinerary = `<h2>${concertTitle.innerHTML}</h2>
+                            <p>${concertLocation.innerHTML}</p>`;
+
+        // Get a reference container to concert itinerary
+        const concertItinerary = document.querySelector('.itinerary__concert');
+
+        // Add concert title and location to the itinerary
+        concertItinerary.innerHTML = newItinerary;
+    }
 });
 
 
