@@ -39,6 +39,7 @@ document.querySelector("#event__button").addEventListener("click", (event) => {
     eventsData.events.forEach(element => {
       const eventHtml = createEventHtml(element)
       displayingHtmlEvents(eventHtml)
+      eventInput.value = ""
       // selected the Save button, and added an event listener once the button is clicked it sends the 
       //search results to the classs .itinerary__meetup
       const saveButtons = document.querySelectorAll(".save__to__itinerary")
@@ -49,6 +50,7 @@ document.querySelector("#event__button").addEventListener("click", (event) => {
         const descriptionItem = button.parentElement.childNodes[2]
         const newHtml = `<h1>${anchorItem.innerHTML} ${textItem.data}</h1>
         <p>${descriptionItem.innerHTML}</p>`
+        console.log(saveButtons)
 
       const itineraryResults = document.querySelector(".itinerary__meetup")
       itineraryResults.innerHTML = newHtml
