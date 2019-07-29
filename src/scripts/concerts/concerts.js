@@ -63,7 +63,6 @@ concertResultsContainer.addEventListener('click', (event) => {
 
     // Get a reference to the classList of the item that was clicked
     const classArray = event.target.classList;
-    console.log(classArray);
 
     // Get a reference to the unique class for the item that was clicked
     const uniqueClass = classArray[1];
