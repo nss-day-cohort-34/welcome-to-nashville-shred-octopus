@@ -43,7 +43,7 @@ searchConcertsButton.addEventListener('click', (event) => {
     // Call fetch function to get data, passing in the user-provided keyword;
     getConcertData(concertSearch).then(parsedConcerts => {
         const concerts = parsedConcerts._embedded.events;
-        const concertResultsContainer = document.querySelector('.concert__results');
+        const concertResultsContainer = document.querySelector('.results__List');
         concertResultsContainer.innerHTML = '';
 
         // Loops through the array of concerts and creates an HTML representation of the concert with its name and location, and adds the representation to the concertResultsContainer on the DOM. Limits results to 4.
@@ -60,7 +60,7 @@ searchConcertsButton.addEventListener('click', (event) => {
 
 // Add an event listener to the concert results container that updates the itinerary with the corresponding concer when the user clicks 'save' for a particular concert.
 
-concertResultsContainer = document.querySelector('.concert__results');
+concertResultsContainer = document.querySelector('.results__List');
 
 concertResultsContainer.addEventListener('click', (event) => {
 
@@ -76,6 +76,7 @@ concertResultsContainer.addEventListener('click', (event) => {
 
     // Check to ensure a save button was clicked and not some random area of the container
     if (uniqueClass.includes('concert__save')) {
+
         // Get a reference to the save button's parent container
         const concertContainer = saveButton.parentElement;
 
