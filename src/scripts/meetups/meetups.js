@@ -38,7 +38,8 @@ document.querySelector("#event__button").addEventListener("click", (event) => {
     eventsData.events.forEach(element => {
       const eventHtml = createEventHtml(element)
       displayingHtmlEvents(eventHtml)
-      // selected the Save button, and added an event listener once the button is clicked
+      // selected the Save button, and added an event listener once the button is clicked it sends the 
+      //search results to the classs .itinerary__meetup
       const saveButtons = document.querySelectorAll(".save__to__itinerary")
       saveButtons.forEach(button => {
         button.addEventListener("click", () => {
@@ -53,8 +54,7 @@ document.querySelector("#event__button").addEventListener("click", (event) => {
       itineraryResults.innerHTML = newHtml
 
         
-    
-        console.log(button.parentElement.childNodes)
+      console.log(button.parentElement.childNodes)
     })
     
     
@@ -66,21 +66,6 @@ document.querySelector("#event__button").addEventListener("click", (event) => {
 })
 })
 
-// createa function that will select the save button and save the results to the itinerar
 
-  // created a second fetch to grab the categories 
+
   
-  /*const getCategories = () => {
-    return fetch(`https://www.eventbriteapi.com/v3/categories/?token=${API_KEY}`,{
-      "headers": {
-        "Accept": "application/json"
-      }
-    })
-    .then(response => response.json())
-    .then(data => console.log(data))
-  
-    }*/
-
-  // create a drop down menu to filter by category
-
-
