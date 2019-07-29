@@ -14,7 +14,7 @@ const getConcertData = (keyword) => {
 let concertID = 0;
 
 const createConcertHTML = (object) => {
-    const concertHTML = `<section class="concert concert__${concertID}">
+    const concertHTML = `<section class="concert concert__${concertID} result">
                             <h2>${object.name}</h2>
                             <p>Location: ${object._embedded.venues[0].name}</p>
                             <button class="concert__result concert__save__${concertID}">Save</button>
@@ -38,7 +38,6 @@ const searchConcertsButton = document.querySelector('.search__concerts');
 searchConcertsButton.addEventListener('click', (event) => {
     // Get reference to value of concert search text input
     const concertSearch = document.querySelector('.search__concerts__keyword').value;
-    concertSearch
 
     // Call fetch function to get data, passing in the user-provided keyword;
     getConcertData(concertSearch).then(parsedConcerts => {
@@ -54,8 +53,6 @@ searchConcertsButton.addEventListener('click', (event) => {
             }
         });
     });
-
-    console.log(concertSearch.value);
 });
 
 // Add an event listener to the concert results container that updates the itinerary with the corresponding concer when the user clicks 'save' for a particular concert.

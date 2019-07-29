@@ -1,0 +1,48 @@
+.results__List {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.result {
+    background-color: lightgoldenrodyellow;
+    border: 2px solid blue;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.itinerary__List {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.itinerary__park {
+    background-color: lightgoldenrodyellow;
+    border: 2px solid blue;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.itinerary__restaurant {
+    background-color: lightgoldenrodyellow;
+    border: 2px solid blue;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.itinerary__meetup {
+    background-color: lightgoldenrodyellow;
+    border: 2px solid blue;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.itinerary__concert {
+    background-color: lightgoldenrodyellow;
+    border: 2px solid blue;
+    border-radius: 5px;
+    padding: 15px;
+}
