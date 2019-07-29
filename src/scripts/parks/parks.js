@@ -35,7 +35,7 @@ const parkAsHTML = (object) => {
         .replace('", "zip": "37212"}', "").replace('", "zip": "37205"}', "").replace('", "zip": "37027"}', "").replace('", "zip": "37214"}', "")
         .replace('", "zip": "37209"}', "").replace('", "zip": "37076"}', "").replace('", "zip": "37115"}', "")}</h3>
        
-        <button class="park__savebutton save__${buttonID}">Save</button>
+        <button class="park__savebutton park__save__${buttonID}">Save</button>
     </section>
     `
 }
@@ -57,7 +57,7 @@ const parentContainer = document.querySelector(".results__List")
 parentContainer.addEventListener("click", function (event) {
     const savebuttonClass = event.target.classList[1];
     const savebutton = document.querySelector(`.${savebuttonClass}`)
-    if (savebuttonClass.includes("save")) {
+    if (savebuttonClass.includes("park__save")) {
         const parksContainer = savebutton.parentElement
         const h31 = parksContainer.childNodes[1]
         const h32 = parksContainer.childNodes[3]
