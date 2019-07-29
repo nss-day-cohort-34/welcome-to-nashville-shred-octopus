@@ -1,4 +1,4 @@
-#Welcome to Nashville: Build an itinerary for a day trip to Music City
+Welcome to Nashville: Build an itinerary for a day trip to Music City
 
 The Welcome to Nashville application is a tool that can be used to search for various things to do around Nasvhille and use their search results to build an itinerary for their time in Music City. The application demonstrates several software development capabilities, including the following:
   
