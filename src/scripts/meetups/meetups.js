@@ -8,7 +8,6 @@ const meetUpsData = (meetUpTopic) => {
     }
   })
   .then(response => response.json())
-  //.then(data => console.log(data))
 }
 
 
@@ -31,7 +30,7 @@ const displayingHtmlEvents = (htmlString) => {
 }
 // selects the search button and uses the input value / #events to create the query.
 document.querySelector("#event__button").addEventListener("click", (event) => {
-  const eventInput = document.querySelector("#events")
+  let eventInput = document.querySelector("#events")
   // invoking the meetUpsData fetch promise, then using the return data it iterates through the events array.
   // Creates Html template and displays the html.
   meetUpsData(eventInput.value).then((eventsData) => {
@@ -47,18 +46,16 @@ document.querySelector("#event__button").addEventListener("click", (event) => {
         button.addEventListener("click", () => {
         const anchorItem = button.parentElement.childNodes[0]
         const textItem = button.parentElement.childNodes[1]
-        console.log(textItem)
         const descriptionItem = button.parentElement.childNodes[2]
         const newHtml = `<h1>${anchorItem.innerHTML} ${textItem.data}</h1>
         <p>${descriptionItem.innerHTML}</p>`
 
       const itineraryResults = document.querySelector(".itinerary__meetup")
       itineraryResults.innerHTML = newHtml
-
-        
-      console.log(button.parentElement.childNodes)
+  
     })
     
+    eventInput.value = '';
     
     
     
