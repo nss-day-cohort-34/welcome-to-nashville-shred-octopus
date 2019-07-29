@@ -35,24 +35,28 @@ const addConcertHTML = (HTMLString, container) => {
 // Add event listener for concert search button
 const searchConcertsButton = document.querySelector('.search__concerts');
 
+
 searchConcertsButton.addEventListener('click', (event) => {
     // Get reference to value of concert search text input
-    const concertSearch = document.querySelector('.search__concerts__keyword').value;
+    let concertSearch = document.querySelector('.search__concerts__keyword');
 
     // Call fetch function to get data, passing in the user-provided keyword;
-    getConcertData(concertSearch).then(parsedConcerts => {
+    getConcertData(concertSearch.value).then(parsedConcerts => {
         const concerts = parsedConcerts._embedded.events;
         const concertResultsContainer = document.querySelector('.results__List');
         concertResultsContainer.innerHTML = '';
+        concertSearch.value = '';
+        
 
         // Loops through the array of concerts and creates an HTML representation of the concert with its name and location, and adds the representation to the concertResultsContainer on the DOM. Limits results to 4.
         concerts.forEach(concert => {
-            if (concerts.indexOf(concert) < 4) {
+            if (concerts.indexOf(concert) < 10) {
                 const concertHTML = createConcertHTML(concert);
                 addConcertHTML(concertHTML, concertResultsContainer);
             }
         });
     });
+    
 });
 
 // Add an event listener to the concert results container that updates the itinerary with the corresponding concer when the user clicks 'save' for a particular concert.

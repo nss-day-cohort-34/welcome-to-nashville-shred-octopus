@@ -8,7 +8,6 @@ const meetUpsData = (meetUpTopic) => {
     }
   })
   .then(response => response.json())
-  
 }
 
 
@@ -31,10 +30,12 @@ const displayingHtmlEvents = (htmlString) => {
 }
 // selects the search button and uses the input value / #events to create the query.
 document.querySelector("#event__button").addEventListener("click", (event) => {
-  const eventInput = document.querySelector("#events")
+  let eventInput = document.querySelector("#events")
   // invoking the meetUpsData fetch promise, then using the return data it iterates through the events array.
   // Creates Html template and displays the html.
   meetUpsData(eventInput.value).then((eventsData) => {
+    const eventsContainer = document.querySelector('.results__List');
+    eventsContainer.innerHTML = '';
     eventsData.events.forEach(element => {
       const eventHtml = createEventHtml(element)
       displayingHtmlEvents(eventHtml)
@@ -53,11 +54,10 @@ document.querySelector("#event__button").addEventListener("click", (event) => {
 
       const itineraryResults = document.querySelector(".itinerary__meetup")
       itineraryResults.innerHTML = newHtml
-
-        
-      
+  
     })
     
+    eventInput.value = '';
     
     
     
