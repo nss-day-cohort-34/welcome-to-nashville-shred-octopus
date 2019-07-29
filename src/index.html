@@ -18,13 +18,18 @@
     </div>
     <div class="searchBox__wrap">
         <fieldset>
-            <label>
-
-            </label>
-            <input>
+            <select id="parkFeature">
+                <option value="playground">Playground</option>
+                <option value="dog_park">Dog Park</option>
+                <option value="tennis_courts">Tennis Courts</option>
+                <option value="swimming_pool">Swimming Pool</option>
+                <option value="golf_course">Golf Course</option>
+                <option value="hiking_trails">Hiking Trails</option>
+                <option value="lake">Lake</option>
+            </select>
 
             </input>
-            <button>Search</button>
+            <button id="park__searchbutton">Search</button>
         </fieldset>
         <fieldset>
             <label>
@@ -65,7 +70,7 @@
         </div>
 
         <div class="itinerary__List">
-            <article class="itinerary__park"></article>
+            <article id="park__itinerary"></article>
             <article class="itinerary__restaurant"></article>
             <article class="itinerary__meetup"></article>
             <article class="itinerary__concert"></article>
@@ -76,6 +81,7 @@
 
 <script src="scripts/data.js"></script>
 <script src="scripts/concerts/concerts.js"></script>
+<script src="scripts/parks/parks.js"></script>
 <script src="scripts/main.js"></script>
 </body>
 
