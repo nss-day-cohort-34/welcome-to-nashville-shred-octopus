@@ -8,7 +8,7 @@ const meetUpsData = (meetUpTopic) => {
     }
   })
   .then(response => response.json())
-  //.then(data => console.log(data))
+  
 }
 
 
@@ -38,6 +38,7 @@ document.querySelector("#event__button").addEventListener("click", (event) => {
     eventsData.events.forEach(element => {
       const eventHtml = createEventHtml(element)
       displayingHtmlEvents(eventHtml)
+      eventInput.value = ""
       // selected the Save button, and added an event listener once the button is clicked it sends the 
       //search results to the classs .itinerary__meetup
       const saveButtons = document.querySelectorAll(".save__to__itinerary")
@@ -45,16 +46,16 @@ document.querySelector("#event__button").addEventListener("click", (event) => {
         button.addEventListener("click", () => {
         const anchorItem = button.parentElement.childNodes[0]
         const textItem = button.parentElement.childNodes[1]
-        console.log(textItem)
         const descriptionItem = button.parentElement.childNodes[2]
         const newHtml = `<h1>${anchorItem.innerHTML} ${textItem.data}</h1>
         <p>${descriptionItem.innerHTML}</p>`
+        console.log(saveButtons)
 
       const itineraryResults = document.querySelector(".itinerary__meetup")
       itineraryResults.innerHTML = newHtml
 
         
-      console.log(button.parentElement.childNodes)
+      
     })
     
     
