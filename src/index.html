@@ -26,13 +26,14 @@
             <button>Search</button>
         </fieldset>
         <fieldset>
-            <label>
+            <label for= "restaurantsinput">Restaurants
 
             </label>
-            <input>
+            <input type= "text" id= "restaurantsinput" placeholder="Search by Food Type">
 
             </input>
-            <button>Search</button>
+
+            <button id="restsearch_button">Search</button>
         </fieldset>
         <fieldset>
             <label>
@@ -54,6 +55,7 @@
         </fieldset>
         <div class="results__wrap">
             <h2>Results</h2>
+            
 
         </div>
         <div class="results__List">
@@ -64,13 +66,15 @@
 
         </div>
         <div class="itinerary__List">
+                <article class="itinerary__restaurant"></article>  
+
 
         </div>
 
 
     </div>
 
-
+    <script src="scripts/restaurants/restaurants.js"></script>
 </body>
 
 </html>
